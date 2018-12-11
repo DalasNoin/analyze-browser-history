@@ -15,4 +15,7 @@ The hist.txt file contains the browser history in the format date|url. On linux 
 
 sqlite3 History "select datetime(last_visit_time/1000000-11644473600,'unixepoch'),url from  urls order by last_visit_time desc" > ~/hist.txt
 
+#For Firefox
+Locate places.sqlite and enter
 
+sqlite3 places.sqlite "select datetime(visit_date/1000000,'unixepoch'),url  from moz_historyvisits inner join moz_places on moz_places.id == place_id" > hist.txt
